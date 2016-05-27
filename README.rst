@@ -47,8 +47,8 @@ Phantom attempts to reduce the total number of actions shown to a user. In order
  - check_blacklist : Check the RiskIQ blacklist
  - check_osint : Check the PassiveTotal OSINT repository
 
-Manual Installation
--------------------
+Manual Installation (command line)
+----------------------------------
 
 *You must be part of the Phantom (https://www.phantom.us/) community and have a virtual appliance in order to run this app.*
 
@@ -67,6 +67,26 @@ It is recommended to use the application that ships with the Phantom appliance. 
 4. Restart the HTTPD server::
 
     $ sudo service httpd restart
+    
+Manual Installation (app upload)
+--------------------------------
+
+1. Download the latest Phantom virtual appliance, SSH to the command line and clone this repository.
+
+2. Install the requirements for the app::
+
+    $ pip install -r requirements.txt
+
+3. Visit Administration within the Phantom portal and click "+ App"
+
+4. Select the "passivetotal.tgz" file
+
+5. Visit "Assets" within the Phantom portal and click "+ Asset"
+
+6. Create a new asset for PassiveTotal
+
+7. Obtain your username (email) and API key from PassiveTotal settings (https://www.passivetotal.org/account_settings)
+
 
 Support
 -------
