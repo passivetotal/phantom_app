@@ -23,29 +23,29 @@ Supported Actions
 Phantom attempts to reduce the total number of actions shown to a user. In order to maximize the amount of data from RiskIQ's PassiveTotal, we chose to create subtasks within each action. Each of the top-level actions can be found within the "investigate" section and will prompt you for a query value and subtask selection.
 
 - get ip info
- - metadata_ip
- - passive_dns
- - ssl_certificate_history
+ - metadata_ip : Metadata for the IP address
+ - passive_dns : Passive DNS records
+ - ssl_certificate_history : SSL certificate history
 - get domain info
- - metadata_domain
- - passive_dns
- - find_subdomains
- - host_pairs
- - analytical_trackers
-- whois domain
-- whois ip
+ - metadata_domain : Metadata for the domain
+ - passive_dns : Passive DNS records
+ - find_subdomains : Get subdomains for the domain
+ - host_pairs : Get parent and child hosts
+ - analytical_trackers : Get listing of analytics trackers
+- whois domain : Show the WHOIS contents
+- whois ip : Show the WHOIS contents
 - hunt ip
- - check_blacklist
- - check_osint
+ - check_blacklist : Check the RiskIQ blacklist
+ - check_osint : Check the PassiveTotal OSINT repository
 - hunt domain
- - check_blacklist
- - check_osint
+ - check_blacklist : Check the RiskIQ blacklist
+ - check_osint : Check the PassiveTotal OSINT repository
 - ip reputation
- - check_blacklist
- - check_osint
+ - check_blacklist : Check the RiskIQ blacklist
+ - check_osint : Check the PassiveTotal OSINT repository
 - domain reputation
- - check_blacklist
- - check_osint
+ - check_blacklist : Check the RiskIQ blacklist
+ - check_osint : Check the PassiveTotal OSINT repository
 
 Manual Installation
 -------------------
