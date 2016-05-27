@@ -19,9 +19,7 @@ RiskIQ's PassiveTotal Phantom application brings the data from Internet-scanning
 Manual Installation
 -------------------
 
-*You must be part of the Phantom_ community and have a virtual appliance in order to run this app.*
-
-.. _Phantom: https://www.phantom.us/
+*You must be part of the Phantom (https://www.phantom.us/) community and have a virtual appliance in order to run this app.*
 
 It is recommended to use the application that ships with the Phantom appliance. However, if you would like to install directly from this source, you can do so using the following steps.
 
