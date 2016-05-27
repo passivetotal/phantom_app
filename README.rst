@@ -15,6 +15,37 @@ RiskIQ's PassiveTotal Phantom application brings the data from Internet-scanning
 - Metadata
 - OSINT
 - Intelligence
+- SSL Certificates
+
+Supported Actions
+-----------------
+
+Phantom attempts to reduce the total number of actions shown to a user. In order to maximize the amount of data from RiskIQ's PassiveTotal, we chose to create subtasks within each action. Each of the top-level actions can be found within the "investigate" section and will prompt you for a query value and subtask selection.
+
+- get ip info
+ - metadata_ip
+ - passive_dns
+ - ssl_certificate_history
+- get domain info
+ - metadata_domain
+ - passive_dns
+ - find_subdomains
+ - host_pairs
+ - analytical_trackers
+- whois domain
+- whois ip
+- hunt ip
+ - check_blacklist
+ - check_osint
+- hunt domain
+ - check_blacklist
+ - check_osint
+- ip reputation
+ - check_blacklist
+ - check_osint
+- domain reputation
+ - check_blacklist
+ - check_osint
 
 Manual Installation
 -------------------
