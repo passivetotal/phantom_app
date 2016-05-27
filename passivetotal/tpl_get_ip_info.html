@@ -1,0 +1,220 @@
+{% extends 'widgets/widget_template.html' %}
+{% load custom_template %}
+{% block title_color %}{{ title_color|default:'white' }}{% endblock %}
+{% block title_text_color %}{{ title_text_color|default:'rgb(101, 71, 150)' }}{% endblock %}
+{% block body_color %}{{ body_color|default:'white' }}{% endblock %}
+{% block body_text_color %}{{ body_text_color|default:'black' }}{% endblock %}
+{% block title1 %}{{ title1 }}{% endblock %}
+{% block title2 %}{{ title2 }}{% endblock %}
+{% block custom_tools %}
+{% endblock %}
+{% block widget_content %}
+
+<style>
+  .pt-fi-td {
+      padding: 5px;
+  }
+
+  a:link {
+      color: black;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  a:visited {
+      color: black;
+  }
+
+  .pt-table {
+      border: 1;
+      padding: 5px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      width: 99%;
+  }
+
+  .pt-table th {
+      text-align: center;
+      padding: 1px;
+      font-weight: bold;
+      border: 1px solid black
+  }
+
+  .pt-table td {
+      padding: 1px;
+      padding-left: 4px;
+      border: 1px solid black;
+  }
+
+  .pt-table a:link {
+      color: black;
+  }
+
+  .pt-table a:hover {
+      text-decoration: underline;
+  }
+
+  .pt-table a:visited {
+      color: black;
+  }
+
+  .pt-td-center {
+      padding: 1px;
+      text-align: center;
+  }
+  .pt-wrapper {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom: 5px;
+  }
+</style>
+<div class="pt-wrapper">
+    {% for result in results %}
+
+    {% if tasks.metadata_ip %}
+    <h4>IP Metadata</h4>
+    <table class="pt-table">
+        <tr>
+            <td class="pt-fi-td"><b>Query Value</b></td>
+            <td class="pt-fi-td">
+                <!-- Add the anchor tag for the contextual action popup -->
+                <a href="javascript:;" onclick="context_menu(this, [{'contains': ['ip'], 'value': '{{ result.data.queryValue }}' }], 0, {{ container.id }}, null, false);">
+                {{ result.data.queryValue }}
+                &nbsp;<span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Network</b></td>
+            <td class="pt-fi-td">{{ result.data.network }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Autonomous System Name</b></td>
+            <td class="pt-fi-td">{{ result.data.autonomousSystemName }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Autonomous System Number</b></td>
+            <td class="pt-fi-td">{{ result.data.autonomousSystemNumber }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Longitude</b></td>
+            <td class="pt-fi-td">{{ result.data.longitude }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Latitude</b></td>
+            <td class="pt-fi-td">{{ result.data.latitude }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Country</b></td>
+            <td class="pt-fi-td">{{ result.data.country }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Ever Compromised?</b></td>
+            <td class="pt-fi-td">{{ result.data.everCompromised }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Sinkholed?</b></td>
+            <td class="pt-fi-td">{{ result.data.sinkhole }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Tags</b></td>
+            <td class="pt-fi-td">{{ result.data.tags|join:", " }}</td>
+        </tr>
+    </table>
+    {% endif %}
+
+    {% if tasks.passive_dns %}
+    <h4>Passive DNS</h4>
+    <table class="pt-table">
+        <tr>
+            <td class="pt-fi-td"><b>Query Value</b></td>
+            <td class="pt-fi-td">
+                <!-- Add the anchor tag for the contextual action popup -->
+                <a href="javascript:;" onclick="context_menu(this, [{'contains': ['ip'], 'value': '{{ result.data.queryValue }}' }], 0, {{ container.id }}, null, false);">
+                {{ result.data.queryValue }}
+                &nbsp;<span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>First Seen</b></td>
+            <td class="pt-fi-td">{{ result.data.firstSeen }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Last Seen</b></td>
+            <td class="pt-fi-td">{{ result.data.lastSeen }}</td>
+        </tr>
+        <tr>
+            <td class="pt-fi-td"><b>Total Records</b></td>
+            <td class="pt-fi-td">{{ result.data.totalRecords }}</td>
+        </tr>
+    </table>
+
+    <table class="pt-table">
+      <thead>
+        <th>Resolution</th>
+        <th>First Seen</th>
+        <th>Last Seen</th>
+        <th>Sources</th>
+      </thead>
+      <tbody>
+      {% for record in result.data.results %}
+        <tr>
+          <td>
+              <a href="javascript:;" onclick="context_menu(this, [{'contains': ['domain'], 'value': '{{ record.resolve }}' }], 0, {{ container.id }}, null, false);">
+              {{ record.resolve }}
+              &nbsp;<span class="fa fa-caret-down" style="font-size: smaller;"></span>
+              </a>
+          </td>
+          <td>{{ record.firstSeen }}</td>
+          <td>{{ record.lastSeen }}</td>
+          <td>{{ record.source|join:", " }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if tasks.ssl_certificate_history %}
+    <h4>SSL Certificate History</h4>
+    <table class="pt-table">
+      <thead>
+        <th>IP Address</th>
+        <th>First Seen</th>
+        <th>Last Seen</th>
+        <th>SHA-1</th>
+      </thead>
+      <tbody>
+      {% for record in result.data.results %}
+        {% for ip in record.ipAddresses %}
+        <tr>
+          <td>
+              <a href="javascript:;" onclick="context_menu(this, [{'contains': ['ip'], 'value': '{{ ip }}' }], 0, {{ container.id }}, null, false);">
+              {{ ip }}
+              &nbsp;<span class="fa fa-caret-down" style="font-size: smaller;"></span>
+              </a>
+          </td>
+          <td>{{ record.firstSeen }}</td>
+          <td>{{ record.lastSeen }}</td>
+          <td>
+              <a href="javascript:;" onclick="context_menu(this, [{'contains': ['hash'], 'value': '{{ record.sha1 }}' }], 0, {{ container.id }}, null, false);">
+              {{ record.sha1 }}
+              &nbsp;<span class="fa fa-caret-down" style="font-size: smaller;"></span>
+              </a>
+          </td>
+        </tr>
+        {% endfor %}
+      {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% endfor %}
+</div>
+
+{% endblock %}

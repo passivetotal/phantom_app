@@ -1,0 +1,46 @@
+import phantom.rules as phantom
+import json
+
+
+def output_cb(action, success, incident, results, handle):
+
+    if not success:
+        return
+
+    return
+
+def check_blacklist_cb(action, success, incident, results, handle):
+
+    if not success:
+        return
+
+    results = results.pop(0)
+    action_results = results.get('action_results', list())
+    if len(action_results) == 0:
+        return
+    action_results = action_results.pop(0)
+    passive_dns = action_results['data'][0]['results']['passive_dns']['results']
+
+    tmp = list()
+    for item in passive_dns:
+        tmp.append(item['resolve'])
+    tmp = list(set(tmp))
+
+    parameters = list()
+    for item in tmp:
+        parameters.append({"query": item, "task": "check_blacklist"})
+    phantom.act('hunt domain', parameters=parameters, assets=['passivetotal'], callback=output_cb)
+
+    return
+
+
+def on_start(incident):
+    phantom.act('get ip info', parameters=[{ "query" : "52.9.20.68", "task": "passive_dns" }], callback=check_blacklist_cb)
+
+    return
+
+def on_finish(incident, summary):
+
+    phantom.debug("Summary: " + summary)
+
+    return
