@@ -81,9 +81,56 @@
         }, {
             "data_path": "action_result.parameter.query",
             "data_type": "string",
-            "contains": ["domain", "ip"],
-            "column_name": "Query",
-            "column_order": 0
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.resolve",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.firstSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.lastSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.source",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.network",
+            "data_type": "string",
+            "contains": ["subnet"]
+        }, {
+            "data_path": "action_result.data.*.results.metadata_ip.autonomousSystemNumber",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_ip.autonomousSystemName",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_ip.country",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_ip.sinkhole",
+            "data_type": "boolean"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_ip.everCompromised",
+            "data_type": "boolean"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_ip.tags",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.ssl_certificate_history.results.*.sha1",
+            "data_type": "string",
+            "contains": ["sha1"]
+        }, {
+            "data_path": "action_result.data.*.results.ssl_certificate_history.results.*.firstSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.ssl_certificate_history.results.*.lastSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.ssl_certificate_history.results.*.ipAddresses",
+            "data_type": "string",
+            "contains": ["ip"]
         }],
         "versions": "EQ(*)"
     }, {
@@ -125,9 +172,74 @@
         }, {
             "data_path": "action_result.parameter.query",
             "data_type": "string",
-            "contains": ["domain", "ip"],
-            "column_name": "Query",
-            "column_order": 0
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.resolve",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.firstSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.lastSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.passive_dns.results.*.source",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_domain.primaryDomain",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_domain.tld",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_domain.subdomains",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_domain.dynamicDns",
+            "data_type": "boolean"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_domain.everCompromised",
+            "data_type": "boolean"
+        }, {
+            "data_path": "action_result.data.*.results.metadata_domain.tags",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.analytic_trackers.results.*.hostname",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.analytic_trackers.results.*.firstSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.analytic_trackers.results.*.lastSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.analytic_trackers.results.*.attributeType",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.analytic_trackers.results.*.attributeValue",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.host_pairs.results.*.parent",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.host_pairs.results.*.child",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.host_pairs.results.*.firstSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.host_pairs.results.*.lastSeen",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.host_pairs.results.*.cause",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.find_subdomains.subdomains",
+            "data_type": "string"
         }],
         "versions": "EQ(*)"
     }, {
@@ -167,9 +279,23 @@
         }, {
             "data_path": "action_result.parameter.query",
             "data_type": "string",
-            "contains": ["domain", "ip"],
-            "column_name": "Query",
-            "column_order": 0
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.inReport",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.source",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.tags",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.sourceUrl",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_blacklist.results.*.blacklisted",
+            "data_type": "boolean"
         }],
         "versions": "EQ(*)"
     }, {
@@ -209,9 +335,23 @@
         }, {
             "data_path": "action_result.parameter.query",
             "data_type": "string",
-            "contains": ["domain", "ip"],
-            "column_name": "Query",
-            "column_order": 0
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.inReport",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.source",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.tags",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.sourceUrl",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_blacklist.results.*.blacklisted",
+            "data_type": "boolean"
         }],
         "versions": "EQ(*)"
     }, {
@@ -251,9 +391,23 @@
         }, {
             "data_path": "action_result.parameter.query",
             "data_type": "string",
-            "contains": ["domain", "ip"],
-            "column_name": "Query",
-            "column_order": 0
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.inReport",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.source",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.tags",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.sourceUrl",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_blacklist.results.*.blacklisted",
+            "data_type": "boolean"
         }],
         "versions": "EQ(*)"
     }, {
@@ -293,9 +447,23 @@
         }, {
             "data_path": "action_result.parameter.query",
             "data_type": "string",
-            "contains": ["domain", "ip"],
-            "column_name": "Query",
-            "column_order": 0
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.inReport",
+            "data_type": "string",
+            "contains": ["domain", "ip"]
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.source",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.tags",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_osint.results.*.sourceUrl",
+            "data_type": "string"
+        }, {
+            "data_path": "action_result.data.*.results.check_blacklist.results.*.blacklisted",
+            "data_type": "boolean"
         }],
         "versions": "EQ(*)"
     }, {
